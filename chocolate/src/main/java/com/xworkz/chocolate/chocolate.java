@@ -49,4 +49,25 @@ public class chocolate {
 		System.out.println("invoked stressReliver");
 		System.out.println("eat choclate to reduce Stress");
 	}
+	public chocolate(String name, String size, double price, String brand) {
+		super();
+		this.name = name;
+		this.size = size;
+		this.price = price;
+		this.brand = brand;
+		System.out.println("four parameterized constructor");
+	}
+
+	public chocolate(String name, String size) {
+		super();
+		this.name = name;
+		this.size = size;
+		System.out.println("two parameterized constructor");
+	}
+
+	@Override
+	public String toString() {
+		return "chocolate [name=" + name + ", size=" + size + ", price=" + price + ", brand=" + brand + "]";
+	}
+
 }
