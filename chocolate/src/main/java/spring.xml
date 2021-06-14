@@ -4,5 +4,13 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-<bean class="com.xworkz.chocolate.chocolate" id="chocolate"></bean>
+<bean class="com.xworkz.chocolate.chocolate" id="chocolate">
+<constructor-arg name="name" value="dairy milk"></constructor-arg>
+<constructor-arg name="size" value="small"></constructor-arg>
+<constructor-arg name="price" value="5.0"></constructor-arg>
+<constructor-arg name="brand" value="cadbury"></constructor-arg>
+
+<property name="brand" value="five star"></property>
+<property name="price" value="100.0"></property> 
+</bean>
 </beans>
