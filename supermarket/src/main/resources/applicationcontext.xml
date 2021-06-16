@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean class="com.xworkz.market.Worker" id="worker">
+		<constructor-arg name="name" value="raju"></constructor-arg>
+		<constructor-arg name="age" value="25"></constructor-arg>
+		<constructor-arg name="gender" value="male"></constructor-arg>
+		<constructor-arg name="phoneNo" value="984563721"></constructor-arg>
+	</bean>
+	<bean class="com.xworkz.market.Address" id="address">
+		<constructor-arg name="street" value="mini market"></constructor-arg>
+		<constructor-arg name="buildingNo" value="3"></constructor-arg>
+		<constructor-arg name="doorNo" value="153"></constructor-arg>
+		<constructor-arg name="pincode" value="56001"></constructor-arg>
+		<constructor-arg name="area" value="shivaj nagar"></constructor-arg>
+	</bean>
+	<bean class="com.xworkz.market.SuperMarket" id="superMarket">
+		<constructor-arg name="name" value="more mall"></constructor-arg>
+		<constructor-arg name="noOfCounters" value="5"></constructor-arg>
+		<constructor-arg name="address" ref="address"></constructor-arg>
+		<constructor-arg name="gst" value="7"></constructor-arg>
+		<constructor-arg name="worker" ref="worker"></constructor-arg>
+	</bean>
+</beans>
