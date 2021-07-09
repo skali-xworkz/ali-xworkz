@@ -30,7 +30,7 @@ public class MobileDAOImpl implements MobileDAO {
 			transaction = session.beginTransaction();
 			session.save(mobileEntity);
 			transaction.commit();
-			System.out.println("data is saved in SQL succesully");
+			System.out.println("data is saved in SQL successfully");
 			return true;
 		} catch (Exception exp) {
 			exp.printStackTrace();
