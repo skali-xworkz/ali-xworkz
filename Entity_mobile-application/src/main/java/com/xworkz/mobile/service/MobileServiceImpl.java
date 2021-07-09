@@ -12,6 +12,7 @@ import com.xworkz.mobile.entity.MobileEntity;
 public class MobileServiceImpl implements MobileService {
 	@Autowired
 	private MobileDAO daoImpl;
+	boolean isValidData = true;
 
 	public MobileServiceImpl() {
 		System.out.println(getClass().getSimpleName() + "object is created");
@@ -27,14 +28,32 @@ public class MobileServiceImpl implements MobileService {
 //		entity.setPrice(dto.getPrice());
 		BeanUtils.copyProperties(dto, entity);
 
-		boolean result = daoImpl.saveMobileDTO(entity);
-		if (result) {
-			System.out.println("data saved");
-			return true;
-		} else {
-			System.out.println("data not saved");
-			return false;
+		System.out.println("checking validate mobile details");
+		if (dto.getName() == null || dto.getName().length() < 4) {
+			isValidData = false;
+			System.out.println("please provide valid Mobilename");
+		} else if (dto.getBrand() == null || dto.getBrand().length() < 5) {
+			isValidData = false;
+			System.out.println("please provide valid Mobile_Brand_name");
+		} else if (dto.getRam() == null || dto.getRam().length() < 2) {
+			isValidData = false;
+			System.out.println("please provide valid Mobile_RAM");
+		} else if (dto.getPrice() == null || dto.getPrice().length() < 5) {
+			isValidData = false;
+			System.out.println("please provide valid Mobile_Price");
 		}
+		if (isValidData) {
+			daoImpl.saveMobileDTO(entity);
+		}
+		return isValidData;
 	}
 
 }
+//		boolean result = daoImpl.saveMobileDTO(entity);
+//		if (result) {
+//			System.out.println("data saved");
+//			return true;
+//		} else {
+//			System.out.println("data not saved");
+//			return false;
+//		}
