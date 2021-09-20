@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+            http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+       
+       <context:component-scan
+		base-package="com.xworkz.vacccine"/>
+		
+			<bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
+		id="localSessionFactoryBean">
+		<property name="dataSource" ref="driverManagerDataSource"></property>
+		<property name="annotatedClasses">
+			<list>
+				<value>com.xworkz.vacccine.entity.VaccineEntity</value>
+			</list>
+		</property>
+	</bean>
+ 	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		id="internalResourceViewResolver">
+		<constructor-arg name="prefix" value="/WEB-INF/pages/" />
+		<constructor-arg name="suffix" value=".jsp" />
+	</bean> 
+	
+	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		id="driverManagerDataSource">
+		<constructor-arg value="${driverManagerDataSource.url}" />
+		<constructor-arg value="${driverManagerDataSource.username}" />
+		<constructor-arg value="${driverManagerDataSource.password}" />
+		<property name="driverClassName" value="${driverManagerDataSource.driverClassName}"></property>
+	</bean>
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		id="propertyPlaceholderConfigurer">
+		<property name="location" value="/WEB-INF/classes/database.properties"></property>
+	</bean>
+	<bean class="org.springframework.mail.javamail.JavaMailSenderImpl"
+		id="JavaMailSenderImpl">
+		<property name="username" value="otpverify2020@gmail.com"></property>
+		<property name="password" value="otpverify@123"></property>
+		<property name="host" value="smtp.gmail.com"></property>
+		<property name="port" value="587"></property>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.debug">true</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+
+		</property>
+	</bean>
+</beans>
